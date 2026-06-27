@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Framework de Neuro-Enfoque 80/20 - Plan Trimestral</title>
+    <title>Framework happy focus 20/80 - Plan Trimestral</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         /* CSS: Arquitectura de Diseño UX */
@@ -32,7 +32,7 @@
 
         header { text-align: center; margin-bottom: 35px; }
         h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: #2c3e50; margin-bottom: 10px; }
-        .framework-badge { display: inline-block; background: var(--accent-blue); color: #1e3a8a; padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; margin-bottom: 15px; }
+        .framework-badge { display: inline-block; background: var(--accent-blue); color: #1e3a8a; padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; }
         .ux-intro { color: #555; font-size: 1.05rem; line-height: 1.6; max-width: 750px; margin: 0 auto; }
         
         .spoiler-card { 
@@ -74,7 +74,6 @@
         .prio-selector { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; background: #faf8f5; padding: 6px 10px; border-radius: 6px; border: 1px solid #f1e4d0; }
         .prio-selector input { width: 45px; padding: 4px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-weight: bold; }
 
-        /* Estilos ajustados para el formulario de auditoría en la zona de resultados */
         .audit-sub-form { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #cbd5e1; }
         .audit-sub-form label { font-weight: 600; color: #475569; display: block; margin-top: 10px; margin-bottom: 4px; font-size: 0.85rem; }
         .audit-sub-form label:first-child { margin-top: 0; }
@@ -90,11 +89,15 @@
     <div class="container">
         
         <header>
-            <div class="framework-badge">METODOLOGÍA OPERATIVA</div>
-            <h1>Framework de Neuro-Enfoque 80/20</h1>
+            <div class="framework-badge">Metodología de Ecosistemas de Confianza</div>
+            <h1>Framework happy focus 20/80</h1>
             <p class="ux-intro">
-                Diseñado para vaciar la mente del ruido cotidiano, reestructurar objetivos y neutralizar la sobreestimulación cognitiva.
+                Diseñado para disfrutar lo que haces día a día y entrenar tu mente a vivir en plenitud consciente y presente. Sigue este flujo simplificado de 5 pasos para tomar control de tu atención, energía y enfoque.
             </p>
+            <div class="spoiler-card">
+                🎁 LO QUE VAS A GANAR AL TERMINAR ESTE FRAMEWORK<br>
+                Claridad mental absoluta a través de una ruta depurada. Lograrás hacer las paces con tu agenda, automatizar bloques de tiempo de hiperfoco y estructurar las acciones de alto impacto necesarias para incrementar tu autoconfianza y autonomía.
+            </div>
         </header>
 
         <div class="step-block" style="background: #f8fafc; border-left: 4px solid var(--accent-blue);">
@@ -115,7 +118,7 @@
                 <div class="step-number">1</div>
                 <div>
                     <h2 class="step-title">Estructura tus Pilares Estratégicos</h2>
-                    <div class="step-instruction">Personaliza los frentes de tu vida (Mínimo 3, Máximo 5) para segmentar tus esfuerzos.</div>
+                    <div class="step-instruction">Personaliza los frentes de tu vida (Mínimo 3, Máximo 5) para segmentar tus esfuerzos. Ejemplo: Personal, Familiar, Trabajo, Emprendimiento 1, Emprendimiento 2, Negocio, etc.</div>
                 </div>
             </div>
             <div class="pillars-config-list" id="pillarsConfigList"></div>
@@ -199,7 +202,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        let pillars = ["Personal", "Familiar", "Corporativo", "Emprendimiento"];
+        let pillars = ["Personal", "Familiar", "Trabajo", "Emprendimiento"];
         let tasks = [];
         let taskIdCounter = 0;
 
@@ -268,10 +271,8 @@
 
         window.updatePriority = function(id, value) { const task = tasks.find(t => t.id === id); if (task) task.priority = parseInt(value) || null; };
         
-        // Esta función actualizará los datos en memoria cuando el usuario llene el formulario en el Paso 4
         window.updateTaskField = function(id, field, value) { const task = tasks.find(t => t.id === id); if (task) task[field] = value; };
 
-        // Renderiza el Paso 3 (SOLO PRIORIDAD, SIN AUDITORÍA)
         window.renderGridUI = function() {
             const grid = document.getElementById('pillarsGrid'); grid.innerHTML = '';
             pillars.forEach(pillar => {
@@ -292,7 +293,6 @@
             });
         };
 
-        // Renderiza el Paso 4 (INYECCIÓN DE AUDITORÍA EN LAS TAREAS CRÍTICAS)
         window.processFramework = function() {
             if (tasks.length === 0 || tasks.some(t => t.priority === null)) {
                 alert("Por favor, ingresa actividades y asigna su nivel de prioridad antes de procesar."); return;
@@ -311,7 +311,6 @@
 
                     critical.forEach(t => {
                         elementsGenerated = true;
-                        // Aquí inyectamos el formulario de 5 pasos para que el usuario lo llene en las tareas ganadoras
                         criticalOutput.innerHTML += `
                             <div class="result-item-card">
                                 <div style="font-size:1.2rem; font-weight:700;">
@@ -346,8 +345,6 @@
             const planDate = document.getElementById('planDate').value;
             
             try {
-                // Filtramos para guardar el arreglo completo en Firebase. 
-                // Las tareas del 80% tendrán los campos de auditoría vacíos (lo cual es correcto).
                 const paqueteDatos = {
                     usuario: userName, fechaInicio: planDate,
                     fechaRegistroServidor: new Date().toISOString(),
@@ -368,7 +365,7 @@
                 alert("Por favor, selecciona una Fecha de Inicio en el primer paso."); return;
             }
 
-            let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Framework Neuro-Enfoque 80/20//ES\n";
+            let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Framework happy focus 20/80//ES\n";
             let startDate = new Date(dateInput);
 
             for (let i = 1; i <= 12; i++) {
@@ -380,7 +377,7 @@
                 let dtEnd = eventDate.toISOString().replace(/-|:|\.\d+/g, '').substring(0, 15) + "Z";
 
                 icsContent += "BEGIN:VEVENT\n";
-                icsContent += `UID:semana${i}-${Date.now()}@neuroenfoque.com\n`;
+                icsContent += `UID:semana${i}-${Date.now()}@ecosistemasdeconfianza.com\n`;
                 icsContent += `DTSTAMP:${dtStart}\n`;
                 icsContent += `DTSTART:${dtStart}\n`;
                 icsContent += `DTEND:${dtEnd}\n`;
