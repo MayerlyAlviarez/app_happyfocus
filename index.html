@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gestión de Prioridades y Enfoque</title>
+    <title>Framework de Neuro-Enfoque 80/20 - Plan Trimestral</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* CSS: Estructura visual y componentes de la interfaz */
+        /* CSS: Arquitectura de Diseño UX */
         :root {
             --bg-page: #faf7f2;
             --card-bg: #ffffff;
@@ -28,125 +28,198 @@
             align-items: center;
         }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: #2c3e50; margin-bottom: 5px; text-align: center; }
-        .subtitle { margin-bottom: 30px; color: #555; text-align: center; max-width: 750px; font-size: 1.05rem; }
+        .container { width: 100%; max-width: 900px; }
 
-        .container { width: 100%; max-width: 1200px; }
+        header { text-align: center; margin-bottom: 35px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: #2c3e50; margin-bottom: 10px; }
+        .framework-badge { display: inline-block; background: var(--accent-blue); color: #1e3a8a; padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; margin-bottom: 15px; }
+        .ux-intro { color: #555; font-size: 1.05rem; line-height: 1.6; max-width: 750px; margin: 0 auto; }
+        
+        .spoiler-card { 
+            background: #fffbeb; 
+            border: 1px solid #fef3c7; 
+            color: #b45309; 
+            padding: 18px; 
+            border-radius: 12px; 
+            font-weight: 600; 
+            margin-top: 20px; 
+            font-size: 0.95rem; 
+            line-height: 1.5;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.05);
+        }
 
-        .card {
+        .step-block {
             background: var(--card-bg);
             border-radius: 16px;
             padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
             border: 1px solid var(--border-soft);
         }
 
-        h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-top: 0; color: #34495e; display: flex; align-items: center; gap: 10px; }
-        .badge-count { font-size: 0.8rem; background: #e2e8f0; padding: 4px 8px; border-radius: 20px; font-family: 'Quicksand', sans-serif; }
+        .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #f3ebe1; padding-bottom: 12px; }
+        .step-number { background: #2c3e50; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+        .step-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #34495e; margin: 0; }
+        .step-instruction { font-size: 0.9rem; color: #7f8c8d; margin-top: 4px; }
 
-        /* Configuración de Pilares */
-        .pillars-config { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
-        .pillar-edit-tag { background: #f1f5f9; padding: 6px 12px; border-radius: 10px; display: flex; align-items: center; gap: 8px; border: 1px solid #cbd5e1; }
-        .pillar-edit-tag input { border: none; background: transparent; font-family: inherit; font-weight: 700; width: 110px; color: var(--text-main); }
-        .btn-mini-del { background: #fee2e2; border: none; color: #ef4444; border-radius: 50%; width: 22px; height: 22px; cursor: pointer; font-weight: bold; font-size: 0.75rem; }
-        .btn-mini-del:disabled { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; }
-
-        /* Controles de Formulario */
-        .form-group { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
+        .form-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
         input[type="text"], select, textarea { padding: 12px; border: 1px solid var(--border-soft); border-radius: 10px; font-size: 0.95rem; font-family: inherit; }
         input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-blue); }
         
         .btn { background: var(--accent-green); color: white; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
         .btn:hover { filter: brightness(0.95); }
         .btn:disabled { background: #cbd5e1; cursor: not-allowed; }
-        .btn-orange { background: var(--accent-orange); }
+        .btn-orange { background: var(--accent-orange); width: 100%; padding: 16px; font-size: 1.1rem; font-weight: bold; border-radius: 12px; }
 
-        /* Grid de Pilares Dinámicos */
-        .pillars-grid { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; margin-top: 15px; align-items: flex-start; }
-        .pillar-col { background: #f8fafc; border-radius: 14px; padding: 15px; min-width: 320px; flex: 1; border: 1px solid #e2e8f0; }
+        .pillars-config-list { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+        .pillar-tag { background: #f1f5f9; padding: 6px 12px; border-radius: 10px; display: flex; align-items: center; gap: 8px; border: 1px solid #cbd5e1; }
+        .pillar-tag input { border: none; background: transparent; font-family: inherit; font-weight: 700; width: 110px; color: var(--text-main); }
+        .btn-del-pillar { background: #fee2e2; border: none; color: #ef4444; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-weight: bold; font-size: 0.7rem; }
+        .btn-del-pillar:disabled { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; }
+
+        .pillars-canvas { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; margin-top: 15px; align-items: flex-start; }
+        .p-column { background: #f8fafc; border-radius: 14px; padding: 15px; min-width: 310px; flex: 1; border: 1px solid #e2e8f0; }
+        .p-column-title { font-weight: 700; color: #1e293b; margin-bottom: 15px; font-size: 0.95rem; border-bottom: 2px solid var(--accent-blue); padding-bottom: 6px; }
         
-        /* Tarjeta de Actividad con Formulario Integrado (NUEVA INTERFAZ) */
-        .task-card { background: white; border: 1px solid var(--border-soft); padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.01); }
-        .task-title { font-weight: 700; margin-bottom: 10px; font-size: 1rem; color: #1e293b; }
+        .t-card { background: white; border: 1px solid var(--border-soft); padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.01); }
+        .t-title { font-weight: 700; margin-bottom: 12px; font-size: 0.95rem; color: #1e293b; }
         
-        .priority-box { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; background: #faf8f5; padding: 6px 10px; border-radius: 6px; margin-bottom: 12px; border: 1px solid #f1e4d0; }
-        .priority-box input { width: 50px; padding: 4px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-weight: bold; }
+        .prio-selector { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; background: #faf8f5; padding: 6px 10px; border-radius: 6px; margin-bottom: 12px; border: 1px solid #f1e4d0; }
+        .prio-selector input { width: 45px; padding: 4px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-weight: bold; }
 
-        /* Formulario Interno de la Tarjeta */
-        .task-audit-fields { background: #fdfbf7; padding: 10px; border-radius: 8px; border: 1px solid #f1e4d0; font-size: 0.8rem; }
-        .task-audit-fields label { font-weight: 600; color: #555; display: block; margin-top: 6px; margin-bottom: 2px; }
-        .task-audit-fields label:first-child { margin-top: 0; }
-        .task-audit-fields input, .task-audit-fields textarea { width: 100%; padding: 6px; font-size: 0.8rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-family: inherit; background: white; }
+        .audit-sub-form { background: #fdfbf7; padding: 10px; border-radius: 8px; border: 1px solid #f1e4d0; font-size: 0.8rem; }
+        .audit-sub-form label { font-weight: 600; color: #666; display: block; margin-top: 8px; margin-bottom: 2px; }
+        .audit-sub-form label:first-child { margin-top: 0; }
+        .audit-sub-form input, .audit-sub-form textarea { width: 100%; padding: 6px; font-size: 0.8rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-family: inherit; background: white; margin-bottom: 4px; }
 
-        /* Salida de Resultados */
-        .output-zone { display: none; background: #f5fafd; border: 2px dashed var(--accent-blue); }
-        .visual-audit-card { background: white; border: 1px solid #cbd5e1; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
-        .visual-audit-step { margin-bottom: 8px; font-size: 0.9rem; }
-        .visual-audit-step strong { color: #2c3e50; }
-        .actions-sync { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .output-container { display: none; background: #f5fafd; border: 2px dashed var(--accent-blue); }
+        .result-item-card { background: white; border: 1px solid #cbd5e1; padding: 18px; border-radius: 12px; margin-bottom: 15px; border-left: 5px solid var(--accent-green); }
+        .result-step { margin-top: 6px; font-size: 0.9rem; line-height: 1.4; }
+        .result-step strong { color: #2c3e50; }
+        .sync-buttons { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
     </style>
 </head>
 <body>
 
-    <h1>Sistema de Gestión de Prioridades</h1>
-    <p class="subtitle">Ingresa tus actividades por pilares, desarrolla la evaluación técnica por cada una de ellas y ejecuta el filtro algorítmico de Pareto.</p>
-
     <div class="container">
+        
+        <header>
+            <div class="framework-badge">METODOLOGÍA OPERATIVA</div>
+            <h1>Framework de Neuro-Enfoque 80/20</h1>
+            <p class="ux-intro">
+                Diseñado específicamente para vaciar la mente del ruido cotidiano, reestructurar objetivos y neutralizar la sobreestimulación cognitiva. Sigue este flujo simplificado de 5 pasos para tomar control de tu trimestre.
+            </p>
+            <div class="spoiler-card">
+                🎁 LO QUE VAS A GANAR AL TERMINAR ESTE PROCESO:<br>
+                Claridad mental absoluta a través de una ruta crítica depurada. Lograrás blindar tu agenda, automatizar tus mañanas de hiperfoco y estructurar las acciones de alto impacto necesarias para incrementar la autoconfianza y traccionar los ingresos reales de tu negocio.
+            </div>
+        </header>
 
-        <!-- CONFIGURACIÓN DE PILARES -->
-        <div class="card">
-            <h2>🛠️ Configuración de tus Pilares <span class="badge-count">Mín 3 / Máx 5</span></h2>
-            <div class="pillars-config" id="pillarsConfigContainer"></div>
-            <div class="form-group">
-                <input type="text" id="newPillarName" placeholder="Nuevo pilar...">
-                <button class="btn" id="btnAddPillar" onclick="addPillar()">+ Añadir Pilar</button>
+        <div class="step-block">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div>
+                    <h2 class="step-title">Estructura tus Pilares Estratégicos</h2>
+                    <div class="step-instruction">Personaliza los frentes de tu vida (Mínimo 3, Máximo 5) para segmentar tus esfuerzos.</div>
+                </div>
+            </div>
+            <div class="pillars-config-list" id="pillarsConfigList"></div>
+            <div class="form-row">
+                <input type="text" id="newPillarName" placeholder="Nombre del nuevo pilar...">
+                <button class="btn" id="btnAddPillar" onclick="addPillar()">Añadir</button>
             </div>
         </div>
 
-        <!-- LLUVIA DE ACTIVIDADES -->
-        <div class="card">
-            <h2>📝 Lluvia de Actividades <span class="badge-count">Anote las tareas y complete sus campos individuales</span></h2>
-            <div class="form-group">
-                <input type="text" id="taskName" placeholder="Nombre de la actividad..." style="flex:2;">
+        <div class="step-block">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div>
+                    <h2 class="step-title">Volcado Cerebral de Actividades</h2>
+                    <div class="step-instruction">Descarga todas las tareas pendientes sin orden jerárquico (Máximo 10 actividades por pilar).</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <input type="text" id="taskName" placeholder="¿Qué acción tienes en mente?" style="flex:2;">
                 <select id="taskPillarSelect" style="flex:1;"></select>
                 <button class="btn" onclick="addTask()">Volcar Actividad</button>
             </div>
-            
-            <!-- Grid donde JavaScript inyectará las columnas y sus formularios independientes -->
-            <div class="pillars-grid" id="pillarsGrid"></div>
         </div>
 
-        <!-- ACCIÓN DE PROCESAMIENTO -->
-        <button class="btn btn-orange" style="width:100%; padding:16px; font-size:1.1rem; font-weight:bold; border-radius:12px; margin-bottom:25px;" onclick="generateHighImpactPlan()">
-            🚀 Procesar Consciencia y Calcular Filtro de Pareto (80/20)
-        </button>
+        <div class="step-block">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div>
+                    <h2 class="step-title">Auditoría de Consciencia e Importancia</h2>
+                    <div class="step-instruction">Asigna un número de prioridad (1 = Más Crítico) a cada tarjeta y define su contexto evolutivo directo.</div>
+                </div>
+            </div>
+            <div class="pillars-canvas" id="pillarsGrid"></div>
+        </div>
 
-        <!-- PLAN DE ENFOQUE PROCESADO -->
-        <div class="card output-zone" id="outputZone">
-            <h2 style="color: #1e3a8a;">📅 Tus Acciones Críticas Filtradas (El 20% de Éxito)</h2>
-            <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">A continuación se muestran únicamente las tareas de mayor prioridad matemática junto con su respectivo análisis técnico individual:</p>
-            
+        <button class="btn btn-orange" onclick="processFramework()">
+            🚀 Ejecutar Filtro Algorítmico 80/20
+        </button>
+        <br><br>
+
+        <div class="step-block output-container" id="outputZone">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <div>
+                    <h2 class="step-title">Tu 20% de Foco Crítico Filtrado</h2>
+                    <div class="step-instruction">El sistema ha extraído matemáticamente las tareas esenciales que desbloquearán el 80% de tus resultados trimestrales.</div>
+                </div>
+            </div>
             <div id="criticalTasksOutput"></div>
 
-            <div class="actions-sync">
-                <button class="btn" style="background:#dc2626;" onclick="exportToPDF()">📄 Exportar Calendario PDF</button>
-                <button class="btn" style="background:#2563eb;" onclick="syncGoogleCalendar()">📅 Sincronizar a Google Calendar</button>
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed #cbd5e1;">
+                <div class="step-header" style="border:none; padding:0; margin-bottom:15px;">
+                    <div class="step-number">5</div>
+                    <div>
+                        <h2 class="step-title">Planificación Trimestral y Sincronización</h2>
+                        <div class="step-instruction">Exporta, internaliza tu hoja de ruta y asegúrala en la base de datos.</div>
+                    </div>
+                </div>
+                <p style="font-size:0.9rem; color:#555; line-height:1.4;">
+                    <strong>Compromiso Semanal:</strong> Al ejecutar estas tareas críticas en bloques de aislamiento digital, expandirás la confianza en tu toma de decisiones estratégicas.
+                </p>
+                <div class="sync-buttons">
+                    <button class="btn" style="background:#f59e0b; color: white;" onclick="saveToDatabase()">💾 Guardar Datos en Firebase</button>
+                    
+                    <button class="btn" style="background:#dc2626;" onclick="exportPDF()">📄 Descargar Calendario PDF</button>
+                    <button class="btn" style="background:#2563eb;" onclick="syncGoogle()">📅 Sincronizar Google Calendar</button>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <script>
-        // JAVASCRIPT: Lógica de control de estados y renderizado dinámico
+    <script type="module">
+        // 1. Importaciones de Firebase (CDN)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+        // 2. Tu Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBqk6_VoYx8bN-y1hZqcWI74DJBkNmY5vE",
+            authDomain: "framework-neuro-enfoque.firebaseapp.com",
+            projectId: "framework-neuro-enfoque",
+            storageBucket: "framework-neuro-enfoque.firebasestorage.app",
+            messagingSenderId: "881582622745",
+            appId: "1:881582622745:web:0635a5795b203a0ff84288"
+        };
+
+        // 3. Inicializar App y Base de Datos
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Variables de estado
         let pillars = ["Personal", "Familiar", "Corporativo", "Emprendimiento"];
         let tasks = [];
         let taskIdCounter = 0;
 
-        // Administrador de Pilares (Mínimo 3, Máximo 5)
-        function renderPillarsConfig() {
-            const container = document.getElementById('pillarsConfigContainer');
+        // Exponer funciones al objeto global 'window' para que el HTML pueda llamarlas
+        window.renderPillarsConfig = function() {
+            const container = document.getElementById('pillarsConfigList');
             const select = document.getElementById('taskPillarSelect');
             container.innerHTML = '';
             select.innerHTML = '';
@@ -154,47 +227,46 @@
             pillars.forEach((pillar, index) => {
                 const deleteDisabled = pillars.length <= 3 ? 'disabled' : '';
                 container.innerHTML += `
-                    <div class="pillar-edit-tag">
+                    <div class="pillar-tag">
                         <input type="text" value="${pillar}" onchange="updatePillarName(${index}, this.value)">
-                        <button class="btn-mini-del" ${deleteDisabled} onclick="removePillar(${index})">×</button>
+                        <button class="btn-del-pillar" ${deleteDisabled} onclick="removePillar(${index})">×</button>
                     </div>
                 `;
                 select.innerHTML += `<option value="${pillar}">${pillar}</option>`;
             });
 
             document.getElementById('btnAddPillar').disabled = pillars.length >= 5;
-            renderGridUI();
-        }
+            window.renderGridUI();
+        };
 
-        function addPillar() {
+        window.addPillar = function() {
             const name = document.getElementById('newPillarName').value.trim();
             if (name && pillars.length < 5) {
                 pillars.push(name);
                 document.getElementById('newPillarName').value = '';
-                renderPillarsConfig();
+                window.renderPillarsConfig();
             }
-        }
+        };
 
-        function updatePillarName(index, newName) {
+        window.updatePillarName = function(index, newName) {
             if(newName.trim()) {
                 const oldName = pillars[index];
                 pillars[index] = newName.trim();
                 tasks.forEach(t => { if(t.pillar === oldName) t.pillar = newName.trim(); });
-                renderPillarsConfig();
+                window.renderPillarsConfig();
             }
-        }
+        };
 
-        function removePillar(index) {
+        window.removePillar = function(index) {
             if (pillars.length > 3) {
                 const removedPillar = pillars[index];
                 pillars.splice(index, 1);
                 tasks = tasks.filter(t => t.pillar !== removedPillar);
-                renderPillarsConfig();
+                window.renderPillarsConfig();
             }
-        }
+        };
 
-        // Estructura de Datos: Se añaden las propiedades del formulario a nivel de objeto de tarea
-        function addTask() {
+        window.addTask = function() {
             const nameInput = document.getElementById('taskName');
             const pillarSelect = document.getElementById('taskPillarSelect');
             const selectedPillar = pillarSelect.value;
@@ -212,7 +284,6 @@
                 name: nameInput.value.trim(),
                 pillar: selectedPillar,
                 priority: null,
-                // Campos específicos por actividad añadidos al objeto
                 actual: '',
                 deseada: '',
                 recursos: '',
@@ -221,63 +292,55 @@
             });
 
             nameInput.value = '';
-            renderGridUI();
-        }
+            window.renderGridUI();
+        };
 
-        // Funciones de actualización de datos de la tarjeta hacia el arreglo de memoria
-        // Estas funciones vinculan las entradas de texto con el índice del objeto correspondiente
-        function updatePriority(id, value) {
+        window.updatePriority = function(id, value) {
             const task = tasks.find(t => t.id === id);
             if (task) task.priority = parseInt(value) || null;
-        }
+        };
 
-        function updateTaskField(id, field, value) {
+        window.updateTaskField = function(id, field, value) {
             const task = tasks.find(t => t.id === id);
-            if (task) {
-                task[field] = value;
-            }
-        }
+            if (task) task[field] = value;
+        };
 
-        // Renderizador de Interfaz: Construye dinámicamente las tarjetas con sus inputs específicos
-        function renderGridUI() {
+        window.renderGridUI = function() {
             const grid = document.getElementById('pillarsGrid');
             grid.innerHTML = '';
 
             pillars.forEach(pillar => {
                 const pillarTasks = tasks.filter(t => t.pillar === pillar);
                 let colHTML = `
-                    <div class="pillar-col">
-                        <div style="font-weight:700; color:#1e293b; margin-bottom:12px; font-size:0.95rem; border-bottom:2px solid var(--accent-blue); padding-bottom:4px;">
-                            ${pillar} (${pillarTasks.length}/10)
-                        </div>
+                    <div class="p-column">
+                        <div class="p-column-title">${pillar} (${pillarTasks.length}/10)</div>
                 `;
                 
-                // Inyección del formulario detallado dentro de cada componente de actividad
                 pillarTasks.forEach(task => {
                     colHTML += `
-                        <div class="task-card">
-                            <div class="task-title">${task.name}</div>
+                        <div class="t-card">
+                            <div class="t-title">${task.name}</div>
                             
-                            <div class="priority-box">
+                            <div class="prio-selector">
                                 <span>Prioridad:</span>
                                 <input type="number" value="${task.priority || ''}" min="1" placeholder="-" onchange="updatePriority(${task.id}, this.value)">
                             </div>
 
-                            <div class="task-audit-fields">
-                                <label>1. Situación Actual:</label>
-                                <textarea rows="1" onchange="updateTaskField(${task.id}, 'actual', this.value)">${task.actual}</textarea>
+                            <div class="audit-sub-form">
+                                <label>Situación Actual:</label>
+                                <textarea rows="1" placeholder="¿Dónde estás hoy?" onchange="updateTaskField(${task.id}, 'actual', this.value)">${task.actual}</textarea>
 
-                                <label>2. Situación Deseada:</label>
-                                <textarea rows="1" onchange="updateTaskField(${task.id}, 'deseada', this.value)">${task.deseada}</textarea>
+                                <label>Situación Deseada:</label>
+                                <textarea rows="1" placeholder="¿A dónde quieres llegar?" onchange="updateTaskField(${task.id}, 'deseada', this.value)">${task.deseada}</textarea>
 
-                                <label>3. Recursos Activos:</label>
-                                <input type="text" value="${task.recursos}" placeholder="Tiempo, conocimiento..." onchange="updateTaskField(${task.id}, 'recursos', this.value)">
+                                <label>Recursos Activos:</label>
+                                <input type="text" value="${task.recursos}" placeholder="Tiempo, experiencia..." onchange="updateTaskField(${task.id}, 'recursos', this.value)">
 
-                                <label>4. Quién te puede ayudar:</label>
-                                <input type="text" value="${task.ayuda}" placeholder="Contactos, mentores..." onchange="updateTaskField(${task.id}, 'ayuda', this.value)">
+                                <label>Quién te ayuda:</label>
+                                <input type="text" value="${task.ayuda}" placeholder="Contactos o mentores..." onchange="updateTaskField(${task.id}, 'ayuda', this.value)">
 
-                                <label>5. Limitaciones:</label>
-                                <input type="text" value="${task.limitaciones}" placeholder="Excusas o barreras..." onchange="updateTaskField(${task.id}, 'limitaciones', this.value)">
+                                <label>Limitaciones:</label>
+                                <input type="text" value="${task.limitaciones}" placeholder="Miedos o barreras..." onchange="updateTaskField(${task.id}, 'limitaciones', this.value)">
                             </div>
                         </div>
                     `;
@@ -285,15 +348,15 @@
                 colHTML += `</div>`;
                 grid.innerHTML += colHTML;
             });
-        }
+        };
 
-        // Algoritmo de Procesamiento y Cálculo de Pareto por Columna
-        function generateHighImpactPlan() {
+        window.processFramework = function() {
             if (tasks.length === 0 || tasks.some(t => t.priority === null)) {
-                alert("Por favor, ingresa actividades y asigna una prioridad numérica a cada una.");
+                alert("Por favor, asegúrate de haber ingresado actividades y asignado su nivel de prioridad antes de procesar.");
                 return;
             }
 
+            const outputZone = document.getElementById('outputZone');
             const criticalOutput = document.getElementById('criticalTasksOutput');
             criticalOutput.innerHTML = '';
             
@@ -302,51 +365,10 @@
             pillars.forEach(pillar => {
                 const pTasks = tasks.filter(t => t.pillar === pillar);
                 if(pTasks.length > 0) {
-                    // Ordenar de mayor importancia (1) a menor importancia
                     pTasks.sort((a, b) => a.priority - b.priority);
                     
-                    // Cálculo matemático del 20% redondeando hacia arriba
                     const limit = Math.ceil(pTasks.length * 0.20);
                     const critical = pTasks.slice(0, limit);
 
                     critical.forEach(t => {
                         elementsGenerated = true;
-                        // Impresión visual del resultado final mapeando los datos de consciencia específicos de la tarea
-                        criticalOutput.innerHTML += `
-                            <div class="visual-audit-card">
-                                <div style="font-size:1.1rem; margin-bottom:10px;">
-                                    <span style="color:var(--accent-green); font-weight:700;">[${pillar}]</span> 
-                                    <strong>${t.name}</strong> (Prioridad: ${t.priority})
-                                </div>
-                                <div class="visual-audit-step"><strong>1. Situación Actual:</strong> ${t.actual || 'No completado'}</div>
-                                <div class="visual-audit-step"><strong>2. Situación Deseada:</strong> ${t.deseada || 'No completado'}</div>
-                                <div class="visual-audit-step"><strong>3. Recursos Activos:</strong> ${t.recursos || 'No completado'}</div>
-                                <div class="visual-audit-step"><strong>4. Quién ayuda:</strong> ${t.ayuda || 'No completado'}</div>
-                                <div class="visual-audit-step"><strong>5. Limitaciones:</strong> ${t.limitaciones || 'No completado'}</div>
-                            </div>
-                        `;
-                    });
-                }
-            });
-
-            if(elementsGenerated) {
-                const outputZone = document.getElementById('outputZone');
-                outputZone.style.display = 'block';
-                outputZone.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Funciones Mock para abstracciones de servicios externos de backend/APIs
-        function exportToPDF() {
-            alert("Acción de código: Compilando los objetos del arreglo 'tasks' que superaron el filtro de Pareto para estructurar el documento PDF.");
-        }
-
-        function syncGoogleCalendar() {
-            alert("Acción de código: Inicializando protocolo OAuth2 para iterar sobre el 20% de tareas críticas y generar eventos en la API de Google Calendar.");
-        }
-
-        // Inicialización del script en el DOM
-        renderPillarsConfig();
-    </script>
-</body>
-</html>
