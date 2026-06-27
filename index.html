@@ -36,25 +36,13 @@
         .ux-intro { color: #555; font-size: 1.05rem; line-height: 1.6; max-width: 750px; margin: 0 auto; }
         
         .spoiler-card { 
-            background: #fffbeb; 
-            border: 1px solid #fef3c7; 
-            color: #b45309; 
-            padding: 18px; 
-            border-radius: 12px; 
-            font-weight: 600; 
-            margin-top: 20px; 
-            font-size: 0.95rem; 
-            line-height: 1.5;
-            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.05);
+            background: #fffbeb; border: 1px solid #fef3c7; color: #b45309; padding: 18px; 
+            border-radius: 12px; font-weight: 600; margin-top: 20px; font-size: 0.95rem; line-height: 1.5;
         }
 
         .step-block {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
-            border: 1px solid var(--border-soft);
+            background: var(--card-bg); border-radius: 16px; padding: 25px; margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02); border: 1px solid var(--border-soft);
         }
 
         .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #f3ebe1; padding-bottom: 12px; }
@@ -63,7 +51,7 @@
         .step-instruction { font-size: 0.9rem; color: #7f8c8d; margin-top: 4px; }
 
         .form-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
-        input[type="text"], select, textarea { padding: 12px; border: 1px solid var(--border-soft); border-radius: 10px; font-size: 0.95rem; font-family: inherit; }
+        input[type="text"], input[type="date"], select, textarea { padding: 12px; border: 1px solid var(--border-soft); border-radius: 10px; font-size: 0.95rem; font-family: inherit; }
         input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-blue); }
         
         .btn { background: var(--accent-green); color: white; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
@@ -75,8 +63,7 @@
         .pillar-tag { background: #f1f5f9; padding: 6px 12px; border-radius: 10px; display: flex; align-items: center; gap: 8px; border: 1px solid #cbd5e1; }
         .pillar-tag input { border: none; background: transparent; font-family: inherit; font-weight: 700; width: 110px; color: var(--text-main); }
         .btn-del-pillar { background: #fee2e2; border: none; color: #ef4444; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-weight: bold; font-size: 0.7rem; }
-        .btn-del-pillar:disabled { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; }
-
+        
         .pillars-canvas { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 15px; margin-top: 15px; align-items: flex-start; }
         .p-column { background: #f8fafc; border-radius: 14px; padding: 15px; min-width: 310px; flex: 1; border: 1px solid #e2e8f0; }
         .p-column-title { font-weight: 700; color: #1e293b; margin-bottom: 15px; font-size: 0.95rem; border-bottom: 2px solid var(--accent-blue); padding-bottom: 6px; }
@@ -84,18 +71,17 @@
         .t-card { background: white; border: 1px solid var(--border-soft); padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.01); }
         .t-title { font-weight: 700; margin-bottom: 12px; font-size: 0.95rem; color: #1e293b; }
         
-        .prio-selector { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; background: #faf8f5; padding: 6px 10px; border-radius: 6px; margin-bottom: 12px; border: 1px solid #f1e4d0; }
+        .prio-selector { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; background: #faf8f5; padding: 6px 10px; border-radius: 6px; border: 1px solid #f1e4d0; }
         .prio-selector input { width: 45px; padding: 4px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-weight: bold; }
 
-        .audit-sub-form { background: #fdfbf7; padding: 10px; border-radius: 8px; border: 1px solid #f1e4d0; font-size: 0.8rem; }
-        .audit-sub-form label { font-weight: 600; color: #666; display: block; margin-top: 8px; margin-bottom: 2px; }
+        /* Estilos ajustados para el formulario de auditoría en la zona de resultados */
+        .audit-sub-form { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #cbd5e1; }
+        .audit-sub-form label { font-weight: 600; color: #475569; display: block; margin-top: 10px; margin-bottom: 4px; font-size: 0.85rem; }
         .audit-sub-form label:first-child { margin-top: 0; }
-        .audit-sub-form input, .audit-sub-form textarea { width: 100%; padding: 6px; font-size: 0.8rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-family: inherit; background: white; margin-bottom: 4px; }
+        .audit-sub-form input, .audit-sub-form textarea { width: 100%; padding: 8px; font-size: 0.85rem; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-family: inherit; background: #f8fafc; }
 
-        .output-container { display: none; background: #f5fafd; border: 2px dashed var(--accent-blue); }
-        .result-item-card { background: white; border: 1px solid #cbd5e1; padding: 18px; border-radius: 12px; margin-bottom: 15px; border-left: 5px solid var(--accent-green); }
-        .result-step { margin-top: 6px; font-size: 0.9rem; line-height: 1.4; }
-        .result-step strong { color: #2c3e50; }
+        .output-container { display: none; background: #f0fdf4; border: 2px dashed var(--accent-green); }
+        .result-item-card { background: white; border: 1px solid #cbd5e1; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 6px solid var(--accent-green); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
         .sync-buttons { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
     </style>
 </head>
@@ -107,13 +93,22 @@
             <div class="framework-badge">METODOLOGÍA OPERATIVA</div>
             <h1>Framework de Neuro-Enfoque 80/20</h1>
             <p class="ux-intro">
-                Diseñado específicamente para vaciar la mente del ruido cotidiano, reestructurar objetivos y neutralizar la sobreestimulación cognitiva. Sigue este flujo simplificado de 5 pasos para tomar control de tu trimestre.
+                Diseñado para vaciar la mente del ruido cotidiano, reestructurar objetivos y neutralizar la sobreestimulación cognitiva.
             </p>
-            <div class="spoiler-card">
-                🎁 LO QUE VAS A GANAR AL TERMINAR ESTE PROCESO:<br>
-                Claridad mental absoluta a través de una ruta crítica depurada. Lograrás blindar tu agenda, automatizar tus mañanas de hiperfoco y estructurar las acciones de alto impacto necesarias para incrementar la autoconfianza y traccionar los ingresos reales de tu negocio.
-            </div>
         </header>
+
+        <div class="step-block" style="background: #f8fafc; border-left: 4px solid var(--accent-blue);">
+            <div class="step-header" style="border:none; padding:0; margin-bottom:15px;">
+                <div>
+                    <h2 class="step-title" style="font-size: 1.3rem;">Datos del Plan</h2>
+                    <div class="step-instruction">Ingresa tu nombre y la fecha de inicio de tu trimestre.</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <input type="text" id="userName" placeholder="Tu Nombre o Alias..." required style="flex:1;">
+                <input type="date" id="planDate" required style="flex:1;">
+            </div>
+        </div>
 
         <div class="step-block">
             <div class="step-header">
@@ -135,7 +130,7 @@
                 <div class="step-number">2</div>
                 <div>
                     <h2 class="step-title">Volcado Cerebral de Actividades</h2>
-                    <div class="step-instruction">Descarga todas las tareas pendientes sin orden jerárquico (Máximo 10 actividades por pilar).</div>
+                    <div class="step-instruction">Descarga todas las tareas pendientes sin orden jerárquico (Máximo 10 por pilar).</div>
                 </div>
             </div>
             <div class="form-row">
@@ -149,8 +144,8 @@
             <div class="step-header">
                 <div class="step-number">3</div>
                 <div>
-                    <h2 class="step-title">Auditoría de Consciencia e Importancia</h2>
-                    <div class="step-instruction">Asigna un número de prioridad (1 = Más Crítico) a cada tarjeta y define su contexto evolutivo directo.</div>
+                    <h2 class="step-title">Orden de Importancia</h2>
+                    <div class="step-instruction">Asigna un número de prioridad (1 = Más Crítico) a cada tarjeta. El sistema filtrará el resto.</div>
                 </div>
             </div>
             <div class="pillars-canvas" id="pillarsGrid"></div>
@@ -166,27 +161,22 @@
                 <div class="step-number">4</div>
                 <div>
                     <h2 class="step-title">Tu 20% de Foco Crítico Filtrado</h2>
-                    <div class="step-instruction">El sistema ha extraído matemáticamente las tareas esenciales que desbloquearán el 80% de tus resultados trimestrales.</div>
+                    <div class="step-instruction">Estas son tus acciones maestras. <strong>Ahora, define el contexto estratégico de cada una</strong> antes de guardar tu plan.</div>
                 </div>
             </div>
+            
             <div id="criticalTasksOutput"></div>
 
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed #cbd5e1;">
                 <div class="step-header" style="border:none; padding:0; margin-bottom:15px;">
                     <div class="step-number">5</div>
                     <div>
-                        <h2 class="step-title">Planificación Trimestral y Sincronización</h2>
-                        <div class="step-instruction">Exporta, internaliza tu hoja de ruta y asegúrala en la base de datos.</div>
+                        <h2 class="step-title">Sincronización a 12 Semanas</h2>
                     </div>
                 </div>
-                <p style="font-size:0.9rem; color:#555; line-height:1.4;">
-                    <strong>Compromiso Semanal:</strong> Al ejecutar estas tareas críticas en bloques de aislamiento digital, expandirás la confianza en tu toma de decisiones estratégicas.
-                </p>
                 <div class="sync-buttons">
-                    <button class="btn" style="background:#f59e0b; color: white;" onclick="saveToDatabase()">💾 Guardar Datos en Firebase</button>
-                    
-                    <button class="btn" style="background:#dc2626;" onclick="exportPDF()">📄 Descargar Calendario PDF</button>
-                    <button class="btn" style="background:#2563eb;" onclick="syncGoogle()">📅 Sincronizar Google Calendar</button>
+                    <button class="btn" style="background:#f59e0b; color: white;" onclick="saveToDatabase()">💾 Guardar Plan en Firebase</button>
+                    <button class="btn" style="background:#2563eb;" onclick="syncGoogle()">📅 Generar Google Calendar (12 Semanas)</button>
                 </div>
             </div>
         </div>
@@ -194,11 +184,9 @@
     </div>
 
     <script type="module">
-        // 1. Importaciones de Firebase (CDN)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-        // 2. Tu Configuración de Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBqk6_VoYx8bN-y1hZqcWI74DJBkNmY5vE",
             authDomain: "framework-neuro-enfoque.firebaseapp.com",
@@ -208,21 +196,19 @@
             appId: "1:881582622745:web:0635a5795b203a0ff84288"
         };
 
-        // 3. Inicializar App y Base de Datos
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Variables de estado
         let pillars = ["Personal", "Familiar", "Corporativo", "Emprendimiento"];
         let tasks = [];
         let taskIdCounter = 0;
 
-        // Exponer funciones al objeto global 'window' para que el HTML pueda llamarlas
+        document.getElementById('planDate').valueAsDate = new Date();
+
         window.renderPillarsConfig = function() {
             const container = document.getElementById('pillarsConfigList');
             const select = document.getElementById('taskPillarSelect');
-            container.innerHTML = '';
-            select.innerHTML = '';
+            container.innerHTML = ''; select.innerHTML = '';
 
             pillars.forEach((pillar, index) => {
                 const deleteDisabled = pillars.length <= 3 ? 'disabled' : '';
@@ -234,7 +220,6 @@
                 `;
                 select.innerHTML += `<option value="${pillar}">${pillar}</option>`;
             });
-
             document.getElementById('btnAddPillar').disabled = pillars.length >= 5;
             window.renderGridUI();
         };
@@ -242,16 +227,14 @@
         window.addPillar = function() {
             const name = document.getElementById('newPillarName').value.trim();
             if (name && pillars.length < 5) {
-                pillars.push(name);
-                document.getElementById('newPillarName').value = '';
+                pillars.push(name); document.getElementById('newPillarName').value = '';
                 window.renderPillarsConfig();
             }
         };
 
         window.updatePillarName = function(index, newName) {
             if(newName.trim()) {
-                const oldName = pillars[index];
-                pillars[index] = newName.trim();
+                const oldName = pillars[index]; pillars[index] = newName.trim();
                 tasks.forEach(t => { if(t.pillar === oldName) t.pillar = newName.trim(); });
                 window.renderPillarsConfig();
             }
@@ -259,8 +242,7 @@
 
         window.removePillar = function(index) {
             if (pillars.length > 3) {
-                const removedPillar = pillars[index];
-                pillars.splice(index, 1);
+                const removedPillar = pillars[index]; pillars.splice(index, 1);
                 tasks = tasks.filter(t => t.pillar !== removedPillar);
                 window.renderPillarsConfig();
             }
@@ -268,107 +250,158 @@
 
         window.addTask = function() {
             const nameInput = document.getElementById('taskName');
-            const pillarSelect = document.getElementById('taskPillarSelect');
-            const selectedPillar = pillarSelect.value;
+            const selectedPillar = document.getElementById('taskPillarSelect').value;
 
             if (!nameInput.value.trim()) return;
 
-            const currentCount = tasks.filter(t => t.pillar === selectedPillar).length;
-            if (currentCount >= 10) {
-                alert(`Límite de 10 actividades en "${selectedPillar}" alcanzado.`);
-                return;
+            if (tasks.filter(t => t.pillar === selectedPillar).length >= 10) {
+                alert(`Límite de 10 actividades en "${selectedPillar}" alcanzado.`); return;
             }
 
             tasks.push({
-                id: taskIdCounter++,
-                name: nameInput.value.trim(),
-                pillar: selectedPillar,
-                priority: null,
-                actual: '',
-                deseada: '',
-                recursos: '',
-                ayuda: '',
-                limitaciones: ''
+                id: taskIdCounter++, name: nameInput.value.trim(), pillar: selectedPillar,
+                priority: null, actual: '', deseada: '', recursos: '', ayuda: '', limitaciones: ''
             });
 
-            nameInput.value = '';
-            window.renderGridUI();
+            nameInput.value = ''; window.renderGridUI();
         };
 
-        window.updatePriority = function(id, value) {
-            const task = tasks.find(t => t.id === id);
-            if (task) task.priority = parseInt(value) || null;
-        };
+        window.updatePriority = function(id, value) { const task = tasks.find(t => t.id === id); if (task) task.priority = parseInt(value) || null; };
+        
+        // Esta función actualizará los datos en memoria cuando el usuario llene el formulario en el Paso 4
+        window.updateTaskField = function(id, field, value) { const task = tasks.find(t => t.id === id); if (task) task[field] = value; };
 
-        window.updateTaskField = function(id, field, value) {
-            const task = tasks.find(t => t.id === id);
-            if (task) task[field] = value;
-        };
-
+        // Renderiza el Paso 3 (SOLO PRIORIDAD, SIN AUDITORÍA)
         window.renderGridUI = function() {
-            const grid = document.getElementById('pillarsGrid');
-            grid.innerHTML = '';
-
+            const grid = document.getElementById('pillarsGrid'); grid.innerHTML = '';
             pillars.forEach(pillar => {
                 const pillarTasks = tasks.filter(t => t.pillar === pillar);
-                let colHTML = `
-                    <div class="p-column">
-                        <div class="p-column-title">${pillar} (${pillarTasks.length}/10)</div>
-                `;
+                let colHTML = `<div class="p-column"><div class="p-column-title">${pillar} (${pillarTasks.length}/10)</div>`;
                 
                 pillarTasks.forEach(task => {
                     colHTML += `
                         <div class="t-card">
                             <div class="t-title">${task.name}</div>
-                            
-                            <div class="prio-selector">
+                            <div class="prio-selector" style="margin-bottom:0;">
                                 <span>Prioridad:</span>
                                 <input type="number" value="${task.priority || ''}" min="1" placeholder="-" onchange="updatePriority(${task.id}, this.value)">
                             </div>
-
-                            <div class="audit-sub-form">
-                                <label>Situación Actual:</label>
-                                <textarea rows="1" placeholder="¿Dónde estás hoy?" onchange="updateTaskField(${task.id}, 'actual', this.value)">${task.actual}</textarea>
-
-                                <label>Situación Deseada:</label>
-                                <textarea rows="1" placeholder="¿A dónde quieres llegar?" onchange="updateTaskField(${task.id}, 'deseada', this.value)">${task.deseada}</textarea>
-
-                                <label>Recursos Activos:</label>
-                                <input type="text" value="${task.recursos}" placeholder="Tiempo, experiencia..." onchange="updateTaskField(${task.id}, 'recursos', this.value)">
-
-                                <label>Quién te ayuda:</label>
-                                <input type="text" value="${task.ayuda}" placeholder="Contactos o mentores..." onchange="updateTaskField(${task.id}, 'ayuda', this.value)">
-
-                                <label>Limitaciones:</label>
-                                <input type="text" value="${task.limitaciones}" placeholder="Miedos o barreras..." onchange="updateTaskField(${task.id}, 'limitaciones', this.value)">
-                            </div>
-                        </div>
-                    `;
+                        </div>`;
                 });
-                colHTML += `</div>`;
-                grid.innerHTML += colHTML;
+                colHTML += `</div>`; grid.innerHTML += colHTML;
             });
         };
 
+        // Renderiza el Paso 4 (INYECCIÓN DE AUDITORÍA EN LAS TAREAS CRÍTICAS)
         window.processFramework = function() {
             if (tasks.length === 0 || tasks.some(t => t.priority === null)) {
-                alert("Por favor, asegúrate de haber ingresado actividades y asignado su nivel de prioridad antes de procesar.");
-                return;
+                alert("Por favor, ingresa actividades y asigna su nivel de prioridad antes de procesar."); return;
             }
 
             const outputZone = document.getElementById('outputZone');
             const criticalOutput = document.getElementById('criticalTasksOutput');
-            criticalOutput.innerHTML = '';
-            
-            let elementsGenerated = false;
+            criticalOutput.innerHTML = ''; let elementsGenerated = false;
 
             pillars.forEach(pillar => {
                 const pTasks = tasks.filter(t => t.pillar === pillar);
                 if(pTasks.length > 0) {
                     pTasks.sort((a, b) => a.priority - b.priority);
-                    
                     const limit = Math.ceil(pTasks.length * 0.20);
                     const critical = pTasks.slice(0, limit);
 
                     critical.forEach(t => {
                         elementsGenerated = true;
+                        // Aquí inyectamos el formulario de 5 pasos para que el usuario lo llene en las tareas ganadoras
+                        criticalOutput.innerHTML += `
+                            <div class="result-item-card">
+                                <div style="font-size:1.2rem; font-weight:700;">
+                                    <span style="color:var(--accent-green);">[${pillar}]</span> ${t.name}
+                                </div>
+                                <div class="audit-sub-form">
+                                    <label>1. Situación Actual:</label>
+                                    <textarea rows="1" placeholder="¿Dónde estás hoy respecto a esto?" onchange="updateTaskField(${t.id}, 'actual', this.value)">${t.actual}</textarea>
+
+                                    <label>2. Situación Deseada:</label>
+                                    <textarea rows="1" placeholder="¿A dónde quieres llegar?" onchange="updateTaskField(${t.id}, 'deseada', this.value)">${t.deseada}</textarea>
+
+                                    <label>3. Recursos Activos:</label>
+                                    <input type="text" value="${t.recursos}" placeholder="Tiempo, experiencia, dinero..." onchange="updateTaskField(${t.id}, 'recursos', this.value)">
+
+                                    <label>4. Quién te puede ayudar:</label>
+                                    <input type="text" value="${t.ayuda}" placeholder="Contactos, mentores, equipo..." onchange="updateTaskField(${t.id}, 'ayuda', this.value)">
+
+                                    <label>5. Limitaciones:</label>
+                                    <input type="text" value="${t.limitaciones}" placeholder="Miedos, excusas o barreras reales..." onchange="updateTaskField(${t.id}, 'limitaciones', this.value)">
+                                </div>
+                            </div>`;
+                    });
+                }
+            });
+
+            if(elementsGenerated) { outputZone.style.display = 'block'; outputZone.scrollIntoView({ behavior: 'smooth' }); }
+        };
+
+        window.saveToDatabase = async function() {
+            const userName = document.getElementById('userName').value || "Anónimo";
+            const planDate = document.getElementById('planDate').value;
+            
+            try {
+                // Filtramos para guardar el arreglo completo en Firebase. 
+                // Las tareas del 80% tendrán los campos de auditoría vacíos (lo cual es correcto).
+                const paqueteDatos = {
+                    usuario: userName, fechaInicio: planDate,
+                    fechaRegistroServidor: new Date().toISOString(),
+                    pilaresConfigurados: pillars, todasLasActividades: tasks
+                };
+                await addDoc(collection(db, "proyectos_guardados"), paqueteDatos);
+                alert(`✅ ¡Éxito ${userName}! Tu plan con las auditorías se ha guardado correctamente.`);
+            } catch (error) {
+                console.error(error); alert("❌ Hubo un error al guardar.");
+            }
+        };
+
+        window.syncGoogle = function() {
+            const userName = document.getElementById('userName').value || "Usuario";
+            const dateInput = document.getElementById('planDate').value;
+            
+            if (!dateInput) {
+                alert("Por favor, selecciona una Fecha de Inicio en el primer paso."); return;
+            }
+
+            let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Framework Neuro-Enfoque 80/20//ES\n";
+            let startDate = new Date(dateInput);
+
+            for (let i = 1; i <= 12; i++) {
+                let eventDate = new Date(startDate);
+                eventDate.setDate(eventDate.getDate() + (i * 7)); 
+                
+                let dtStart = eventDate.toISOString().replace(/-|:|\.\d+/g, '').substring(0, 15) + "Z";
+                eventDate.setHours(eventDate.getHours() + 1); 
+                let dtEnd = eventDate.toISOString().replace(/-|:|\.\d+/g, '').substring(0, 15) + "Z";
+
+                icsContent += "BEGIN:VEVENT\n";
+                icsContent += `UID:semana${i}-${Date.now()}@neuroenfoque.com\n`;
+                icsContent += `DTSTAMP:${dtStart}\n`;
+                icsContent += `DTSTART:${dtStart}\n`;
+                icsContent += `DTEND:${dtEnd}\n`;
+                icsContent += `SUMMARY:Tu controlas tu avance semana ${i}/12 para tu transformacion\n`;
+                icsContent += `DESCRIPTION:Hola ${userName}.\\n\\nReflexión: anota que acciones hiciste en ese semana para lograr que las acciones focus del 20% te generen el 80% de los resultados.\\n\\n¡Mantén el hiperfoco!\n`;
+                icsContent += "END:VEVENT\n";
+            }
+            icsContent += "END:VCALENDAR";
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', 'Plan-12-Semanas.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            alert("📅 ¡Archivo generado! Abre el archivo descargado para sincronizar las 12 semanas en tu calendario.");
+        };
+
+        window.renderPillarsConfig();
+    </script>
+</body>
+</html>
