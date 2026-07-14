@@ -177,6 +177,12 @@ class App extends Component {
       this.bid = mb;
     }
     if (typeof plan.step === "number") next.step = Math.max(0, Math.min(6, plan.step));
+    // Limpia tareas "huérfanas" (de pilares que ya no existen): eran invisibles en pantalla
+    // pero el validador de Prioriza las contaba y bloqueaba el avance (ej. "6 de 8 puntuadas").
+    const plList = next.pillars || this.state.pillars || [];
+    const tRaw = next.tasks || this.state.tasks || [];
+    const tClean = tRaw.filter(t => plList.some(p => p.id === t.pillarId));
+    if (tClean.length !== tRaw.length) next.tasks = tClean;
     const tlist = next.tasks || this.state.tasks || [];
     if (Array.isArray(plan.critical) && plan.critical.length) { next.critical = plan.critical.map(id => tlist.find(t => t.id === id)).filter(Boolean); }
     if ((!next.critical || !next.critical.length) && tlist.some(t => t.priority)) { next.critical = this._filterCritical(next.pillars || this.state.pillars, tlist); }
@@ -427,7 +433,8 @@ class App extends Component {
     const v = raw === "" ? null : (parseInt(raw, 10) || null);
     this.setState(prev => {
       const tasks = prev.tasks.map(t => t.id === id ? { ...t, priority: v } : t);
-      const completo = tasks.length > 0 && tasks.every(t => !!t.priority);
+      const vis = tasks.filter(t => prev.pillars.some(p => p.id === t.pillarId));
+      const completo = vis.length > 0 && vis.every(t => !!t.priority);
       return completo ? { tasks, notice: "", showMissing: false } : { tasks };
     });
     this._touch();
@@ -512,7 +519,10 @@ class App extends Component {
     const s = this.state.step;
     if (s === 2 && this.state.tasks.length === 0) { this.setState({ notice: "Suelta al menos una idea y asígnala a un pilar para continuar." }); return; }
     if (s === 3) {
-      const faltan = this.state.tasks.filter(t => !t.priority).length;
+      // Solo cuentan las actividades visibles (con pilar existente); purga cualquier huérfana.
+      const visibles = this.state.tasks.filter(t => this.state.pillars.some(p => p.id === t.pillarId));
+      if (visibles.length !== this.state.tasks.length) this.state.tasks = visibles;
+      const faltan = visibles.filter(t => !t.priority).length;
       if (faltan > 0) {
         this.setState({
           notice: faltan === 1
@@ -1301,8 +1311,9 @@ class App extends Component {
   rPrioriza() {
     const st = this.state;
     const groups = st.pillars.map(p => ({ p, tasks: st.tasks.filter(t => t.pillarId === p.id) })).filter(g => g.tasks.length);
-    const total = st.tasks.length;
-    const hechas = st.tasks.filter(t => !!t.priority).length;
+    const visibles = st.tasks.filter(t => st.pillars.some(p => p.id === t.pillarId));
+    const total = visibles.length;
+    const hechas = visibles.filter(t => !!t.priority).length;
     const listo = total > 0 && hechas === total;
     const pct = total ? Math.round((hechas / total) * 100) : 0;
     return html`
