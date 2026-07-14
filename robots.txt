@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mayerlyalviarez.github.io/app_happyfocus/sitemap.xml
